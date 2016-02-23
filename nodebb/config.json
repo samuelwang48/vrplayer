@@ -1,0 +1,12 @@
+{
+    "url": "http://localhost:4567",
+    "secret": "191d7197-36f6-47fd-a9d1-0e033f8238c7",
+    "database": "mongo",
+    "mongo": {
+        "host": "127.0.0.1",
+        "port": "27017",
+        "username": "vrprod",
+        "password": "54dfbb24",
+        "database": "nodebb"
+    }
+}
