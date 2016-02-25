@@ -73,7 +73,7 @@ uploadsController.uploadThumb = function(req, res, next) {
 			}
 
 			if (uploadedFile.type.match(/image./)) {
-				var size = meta.config.topicThumbSize || 120;
+				var size = parseInt(meta.config.topicThumbSize, 10) || 120;
 				image.resizeImage({
 					path: uploadedFile.path,
 					extension: path.extname(uploadedFile.name),
@@ -123,6 +123,14 @@ function uploadFile(uid, uploadedFile, callback) {
 
 	if (uploadedFile.size > parseInt(meta.config.maximumFileSize, 10) * 1024) {
 		return callback(new Error('[[error:file-too-big, ' + meta.config.maximumFileSize + ']]'));
+	}
+
+	if (meta.config.hasOwnProperty('allowedFileExtensions')) {
+		var allowed = meta.config.allowedFileExtensions.split(',').filter(Boolean);
+		var extension = path.extname(uploadedFile.name).slice(1);
+		if (allowed.length > 0 && allowed.indexOf(extension) === -1) {
+			return callback(new Error('[[error:invalid-file-type, ' + allowed.join('&#44; ') + ']]'));
+		}
 	}
 
 	var filename = uploadedFile.name || 'upload';
