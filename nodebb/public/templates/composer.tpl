@@ -1,6 +1,6 @@
 <div class="composer">
+
 	<div class="composer-container">
-                <h1>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h1>
 		<nav class="navbar navbar-fixed-top mobile-navbar visible-xs visible-sm">
 			<span class="pull-left">
 				<button class="btn btn-primary composer-discard" data-action="discard" tabindex="-1"><i class="fa fa-times"></i></button>
